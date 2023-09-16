@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        List<GameObject> uwu;
 
         cam = Camera.main;
         camGO = cam.gameObject;

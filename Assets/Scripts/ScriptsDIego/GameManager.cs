@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     [TextArea] 
     [SerializeField] string[] messagesTexts;
 
+    [SerializeField] List<Transform> placeHoldersPositions;
+
 
     private void Awake()
     {
@@ -57,7 +59,10 @@ public class GameManager : MonoBehaviour
             speechBubbles[i].transform.position = clientTransforms[i].position + bubbleOffset;
         }
 
-        globalTimeLeft -= Time.deltaTime;
+        if (globalTimeLeft >= 0)
+        {
+            globalTimeLeft -= Time.deltaTime;
+        }
         if (globalTimeLeft <= 0)
         {
             EndDay();
@@ -74,6 +79,11 @@ public class GameManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    void ClothesOrganizer()
+    {
+
     }
 
     public void AskForBasket()
@@ -110,6 +120,12 @@ public class GameManager : MonoBehaviour
         currentDay++;
     }
 
+    void EndDayPanelConfig()
+    {
+
+    }
+
+    //se llama por UI
     public void NextDay()
     {
         globalTimeLeft = totalTime;
