@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float globalTimeLeft;
     [HideInInspector] public int clients;
     [HideInInspector] public int money;
+    float totalTime;
 
     [SerializeField] Text message;
     [HideInInspector] public GameObject messageGO;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         messageGO = message.gameObject;
+        totalTime = globalTimeLeft;
     }
 
     private void Update()
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
-
+        globalTimeLeft = totalTime;
+        DesactivateText(endDayPanel);
     }
 }
