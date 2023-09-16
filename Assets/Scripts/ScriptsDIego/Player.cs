@@ -90,21 +90,6 @@ public class Player : MonoBehaviour
         interactTxtGO.SetActive(true);
 
         interactText.text = interactTexts[i];
-        /*
-        switch (i)
-        {
-            default:
-            case 0:
-                interactText.text = interactTexts[0];
-                break;
-            case 1:
-                interactText.text = "";
-                break;
-            case 2:
-                interactText.text = "";
-                break;
-        }
-        */
         //mostrar mensaje de interaccion
     }
 

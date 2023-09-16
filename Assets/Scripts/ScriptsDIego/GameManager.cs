@@ -9,10 +9,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float globalTimeLeft;
     [HideInInspector] public int clients;
+    [HideInInspector] public int money;
 
     [SerializeField] Text message;
-    [SerializeField] GameObject endDayPanel;
     [HideInInspector] public GameObject messageGO;
+    [SerializeField] GameObject endDayPanel;
+
+    [SerializeField] GameObject[] speechBubbles;
+    [SerializeField] Sprite[] emojis;
+    [SerializeField] Transform[] clientTransforms;
+    [SerializeField] Vector3 bubbleOffset;
 
     [TextArea] 
     [SerializeField] string[] messagesTexts;
@@ -39,6 +45,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        for (int i = 0; i < speechBubbles.Length; i++)
+        {
+            speechBubbles[i].transform.position = clientTransforms[i].position + bubbleOffset;
+        }
+
         globalTimeLeft -= Time.deltaTime;
         if (globalTimeLeft <= 0)
         {
@@ -65,5 +76,10 @@ public class GameManager : MonoBehaviour
     void EndDay()
     {
         ActivateText(endDayPanel);
+    }
+
+    public void NextDay()
+    {
+
     }
 }
