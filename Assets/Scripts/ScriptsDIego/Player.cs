@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
     {
         bag = 0;
         GameManager.gM.clients++;
+        
         //activar que el cliente se vaya y tal
     }
 
