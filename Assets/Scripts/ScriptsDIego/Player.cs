@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
     void Punishment()
     {
         GameManager.gM.AskForBasket();
-        //cliente pierde paciencia, devolver prenda a cesta
+        //cliente pierde paciencia
     }
 
     void RightPlacement(int i)
