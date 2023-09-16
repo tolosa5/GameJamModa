@@ -30,6 +30,7 @@ public class PatienceLeveler : MonoBehaviour
 
     public void UpdatePatience(float maxPatience, float currentPatience)
     {
+        Debug.Log("ayaya");
         client = currentPatience / maxPatience;
         drainPatienceCoroutine = StartCoroutine(DrainPatience());
         CheckPatienceAmount();
@@ -45,7 +46,8 @@ public class PatienceLeveler : MonoBehaviour
             elapsedTime += Time.deltaTime;
             //lerp the fill amount
             speechBubble.fillAmount = Mathf.Lerp(fillAmount, client, (elapsedTime / patienceTimer));
-
+            //lerp the color based on the gradient
+            speechBubble.color = Color.Lerp(currentColor, newPatienceColor, (elapsedTime/patienceTimer));
             yield return null;
         }
     }
