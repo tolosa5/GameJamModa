@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     Text interactText;
     [SerializeField] GameObject interactTxtGO;
+    [SerializeField] GameObject correctClothParticlesGO;
+    ParticleSystem correctClothParticles;
     [SerializeField] string[] interactTexts;
 
     public List<int> desiredClothesIds;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         cam = Camera.main;
         camGO = cam.gameObject;
         interactText = interactTxtGO.GetComponent<Text>();
+
+        correctClothParticles = correctClothParticlesGO.GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -81,7 +85,6 @@ public class Player : MonoBehaviour
             targetPosition = hitInfo.point;
             agent.SetDestination(targetPosition);
         }
-        //movDir = new Vector3(h, v, 0).normalized * speed;
     }
 
     void ShowInteractMessage(int i)
@@ -90,7 +93,6 @@ public class Player : MonoBehaviour
         interactTxtGO.SetActive(true);
 
         interactText.text = interactTexts[i];
-        //mostrar mensaje de interaccion
     }
 
     void HideText(GameObject textHolder)
@@ -173,19 +175,20 @@ public class Player : MonoBehaviour
         desiredClothesIds.RemoveAt(i);
         currentState = States.Normal;
         inventory = 0;
+        //se activa feedback
+        correctClothParticles.Play();
 
         if (bag >= 3)
         {
             CompleteBag();
         }
-        //algun feedback positivo
     }
 
     void CompleteBag()
     {
         bag = 0;
         GameManager.gM.clients++;
-        
+        Contants.instance.Ismoving = true;
         //activar que el cliente se vaya y tal
     }
 
