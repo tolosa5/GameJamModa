@@ -7,9 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gM;
 
+    int currentDay = 1;
+
     [SerializeField] float globalTimeLeft;
     [HideInInspector] public int clients;
-    [HideInInspector] public int money;
+    [HideInInspector] public float money;
+    [SerializeField] float baseMoneyGains;
+    [SerializeField] Image fillerImage;
+    float moneyMultiplier;
     float totalTime;
 
     [SerializeField] Text message;
@@ -57,6 +62,18 @@ public class GameManager : MonoBehaviour
         {
             EndDay();
         }
+
+        switch (currentDay)
+        {
+            default:
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+        }
     }
 
     public void AskForBasket()
@@ -75,9 +92,22 @@ public class GameManager : MonoBehaviour
         aux.SetActive(true);
     }
 
+    public void MoneyCalculator()
+    {
+        if (Player.player.completedBag)
+        {
+            Player.player.completedBag = false;
+            moneyMultiplier = fillerImage.fillAmount;
+
+            float clientMoney = baseMoneyGains *= moneyMultiplier;
+            money += clientMoney;
+        }
+    }
+
     void EndDay()
     {
         ActivateText(endDayPanel);
+        currentDay++;
     }
 
     public void NextDay()

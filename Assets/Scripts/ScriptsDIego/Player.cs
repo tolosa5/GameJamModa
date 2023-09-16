@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static Player player;
+
     Rigidbody rb;
     NavMeshAgent agent;
 
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour
     GameObject inTriggerGO;
     int inventory;
     int bag;
+    
+    public bool completedBag;
 
     GameObject nearestClient;
     Request request;
@@ -33,6 +37,19 @@ public class Player : MonoBehaviour
 
     enum States {Normal, Holding};
     States currentState;
+
+    private void Awake()
+    {
+        if (player != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            player = this;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
@@ -196,9 +213,13 @@ public class Player : MonoBehaviour
     void CompleteBag()
     {
         bag = 0;
+        completedBag = true;
         GameManager.gM.clients++;
-        Contants.instance.Ismoving = true;
+
         //activar que el cliente se vaya y tal
+        Contants.instance.Ismoving = true;
+
+        GameManager.gM.MoneyCalculator();
     }
 
     void DropToBasket()
