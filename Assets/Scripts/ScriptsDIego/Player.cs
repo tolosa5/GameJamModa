@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     NavMeshAgent agent;
 
     Text interactText;
-    GameObject interactTxtGO;
+    [SerializeField] GameObject interactTxtGO;
     [SerializeField] string[] interactTexts;
 
     public List<int> desiredClothesIds;
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     Vector3 targetPosition;
 
     [SerializeField] string[] tags;
-    [SerializeField] LayerMask isInteractable;
 
     enum States {Normal, Holding};
     States currentState;
@@ -36,12 +35,12 @@ public class Player : MonoBehaviour
 
         cam = Camera.main;
         camGO = cam.gameObject;
+        interactText = interactTxtGO.GetComponent<Text>();
     }
 
     private void Update()
     {
         Movement();
-        Debug.Log(agent.isStopped);
         Debug.Log(targetPosition);
 
         switch (currentState)
@@ -180,6 +179,7 @@ public class Player : MonoBehaviour
 
     void Punishment()
     {
+        GameManager.gM.AskForBasket();
         //cliente pierde paciencia, devolver prenda a cesta
     }
 
@@ -187,16 +187,26 @@ public class Player : MonoBehaviour
     {
         desiredClothesIds.RemoveAt(i);
         currentState = States.Normal;
+        inventory = 0;
+
         if (bag >= 3)
         {
-
+            CompleteBag();
         }
         //algun feedback positivo
+    }
+
+    void CompleteBag()
+    {
+        bag = 0;
+        GameManager.gM.clients++;
+        //activar que el cliente se vaya y tal
     }
 
     void DropToBasket()
     {
         inventory = 0;
         currentState = States.Normal;
+        GameManager.gM.DesactivateText(GameManager.gM.messageGO);
     }
 }
