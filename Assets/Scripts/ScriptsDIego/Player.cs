@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
     NavMeshAgent agent;
 
+    Text interactText;
+    GameObject interactTxtGO;
+    [SerializeField] string[] interactTexts;
+
     public List<int> desiredClothesIds;
-    int interactedObjId;
     GameObject pickedGO;
     int inventory;
+    int bag;
 
-    float h, v;
     Camera cam;
     GameObject camGO;
-    Vector3 movDir;
 
     Vector3 targetPosition;
 
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Inputs();
+        Movement();
         Debug.Log(agent.isStopped);
         Debug.Log(targetPosition);
 
@@ -45,10 +48,10 @@ public class Player : MonoBehaviour
         {
             default:
             case States.Normal:
-
+                agent.speed = 6;
                 break;
             case States.Holding:
-
+                agent.speed = 5;
                 break;
         }
     }
@@ -62,7 +65,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Inputs()
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 6)
+        {
+            pickedGO = null;
+            HideText(interactTxtGO);
+        }
+    }
+
+    void Movement()
     {
         if (Input.GetMouseButtonDown(0) && Physics.Raycast(cam.ScreenPointToRay
             (Input.mousePosition), out RaycastHit hitInfo))
@@ -75,20 +87,31 @@ public class Player : MonoBehaviour
 
     void ShowInteractMessage(int i)
     {
+        interactTxtGO.transform.position = pickedGO.transform.position;
+        interactTxtGO.SetActive(true);
+
+        interactText.text = interactTexts[i];
+        /*
         switch (i)
         {
             default:
             case 0:
-
+                interactText.text = interactTexts[0];
                 break;
             case 1:
-
+                interactText.text = "";
                 break;
             case 2:
-
+                interactText.text = "";
                 break;
         }
+        */
         //mostrar mensaje de interaccion
+    }
+
+    void HideText(GameObject textHolder)
+    {
+        textHolder.SetActive(false);
     }
 
     void Interact(string objTag)
@@ -109,11 +132,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log(objTag);
-            if (objTag == tags[0] && currentState != States.Holding)
+            if (objTag == tags[0] && currentState == States.Normal)
             {
                 PickUp();
-                Clothes clothScr = pickedGO.GetComponent<Clothes>();
-                inventory = clothScr.GiveId();
             }
             else if (objTag == tags[1] && currentState == States.Holding)
             {
@@ -131,6 +152,9 @@ public class Player : MonoBehaviour
         if (currentState == States.Normal)
         {
             currentState = States.Holding;
+
+            Clothes clothScr = pickedGO.GetComponent<Clothes>();
+            inventory = clothScr.GiveId();
         }
         else
         {
@@ -140,6 +164,7 @@ public class Player : MonoBehaviour
 
     void FillBag()
     {
+        bag++;
         for (int i = 0; i < desiredClothesIds.Count; i++)
         {
             if (desiredClothesIds[i] == inventory)
@@ -150,7 +175,6 @@ public class Player : MonoBehaviour
             {
                 Punishment();
             }
-            
         }
     }
 
@@ -162,11 +186,17 @@ public class Player : MonoBehaviour
     void RightPlacement(int i)
     {
         desiredClothesIds.RemoveAt(i);
+        currentState = States.Normal;
+        if (bag >= 3)
+        {
+
+        }
         //algun feedback positivo
     }
 
     void DropToBasket()
     {
         inventory = 0;
+        currentState = States.Normal;
     }
 }
