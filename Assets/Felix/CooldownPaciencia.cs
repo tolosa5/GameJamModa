@@ -6,9 +6,13 @@ public class CooldownPaciencia : MonoBehaviour
 {
     public Image image; // Referencia al componente Image.
     public Color32[] colores;
-    [Range(3.0f, 15.0f)] public float transitionTime = 5.0f; // Tiempo en segundos para cada transición.
+    [Range(3.0f, 15.0f)] public float transitionTime = 4.0f; // Tiempo en segundos para cada transición.
+    [SerializeField] Image CaritaFeliz;
+    [SerializeField] Image CaritaSeria;
+    [SerializeField] Image CaritaFTriste;
 
     private int startIndex = 0;
+    [SerializeField] private float TiempoDesaparecer = 15.0f; // Tiempo de transición del fill amount.
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +26,17 @@ public class CooldownPaciencia : MonoBehaviour
             new Color32(0, 255, 0, 255)     // green
         };
 
-        StartCoroutine(Cycle());
+        StartCoroutine(CycleColors());
+        StartCoroutine(CycleFillAmount());
     }
 
-    public IEnumerator Cycle()
+    public IEnumerator CycleFace()
+    {
+        yield return null;
+    }
+
+
+    public IEnumerator CycleColors()
     {
         while (true)
         {
@@ -37,16 +48,33 @@ public class CooldownPaciencia : MonoBehaviour
             {
                 float t = elapsedTime / transitionTime;
                 image.color = Color.Lerp(startColor, endColor, t);
-                
-                // Ajustar el valor "fill amount" en función del progreso del ciclo.
-                image.fillAmount = 1.0f - t;
 
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
             startIndex = (startIndex + 1) % 4;
-            yield return null;
+        }
+    }
+
+    public IEnumerator CycleFillAmount()
+    {
+        while (true)
+        {
+            float elapsedTime = 0f;
+            while (elapsedTime < TiempoDesaparecer)
+            {
+                float t = elapsedTime / TiempoDesaparecer;
+                image.fillAmount = 1.0f - t;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            image.fillAmount = 0f;
+
+            // Cambiar los colores antes de que el fill amount llegue a 0.
+            startIndex = (startIndex + 1) % 4;
         }
     }
 }
