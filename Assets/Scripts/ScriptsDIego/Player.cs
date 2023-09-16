@@ -17,8 +17,12 @@ public class Player : MonoBehaviour
 
     public List<int> desiredClothesIds;
     GameObject pickedGO;
+    GameObject inTriggerGO;
     int inventory;
     int bag;
+
+    GameObject nearestClient;
+    Request request;
 
     Camera cam;
     GameObject camGO;
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        List<GameObject> uwu;
 
         cam = Camera.main;
         camGO = cam.gameObject;
@@ -45,7 +50,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
-        Debug.Log(targetPosition);
 
         switch (currentState)
         {
@@ -63,8 +67,10 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-            pickedGO = other.gameObject;
-            Interact(pickedGO.tag);
+            inTriggerGO = other.gameObject;
+            Debug.Log(inTriggerGO);
+            Debug.Log(inTriggerGO.tag);
+            Interact(inTriggerGO.tag);
         }
     }
 
@@ -72,7 +78,8 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == 6)
         {
-            pickedGO = null;
+            pickedGO = inTriggerGO;
+            inTriggerGO = null;
             HideText(interactTxtGO);
         }
     }
@@ -137,6 +144,7 @@ public class Player : MonoBehaviour
     {
         if (currentState == States.Normal)
         {
+            Debug.Log("pickeando " + pickedGO);
             currentState = States.Holding;
 
             Clothes clothScr = pickedGO.GetComponent<Clothes>();
@@ -151,6 +159,7 @@ public class Player : MonoBehaviour
     void FillBag()
     {
         bag++;
+        Debug.Log("llenando bolsa con " + pickedGO);
         for (int i = 0; i < desiredClothesIds.Count; i++)
         {
             if (desiredClothesIds[i] == inventory)

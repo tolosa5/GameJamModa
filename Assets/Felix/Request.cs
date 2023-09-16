@@ -8,31 +8,20 @@ public class Request : MonoBehaviour
 {
     [SerializeField, Range(1,10)] int RangoNum = 5;
 
-
     public Transform targetPosition; // Posición específica a la que el personaje debe llegar.
     public float stoppingDistance = 2.0f; // Distancia de parada cercana al objetivo.
     public string characterName = "Character"; // Nombre del personaje para el archivo JSON.
     private NavMeshAgent navMeshAgent;
     private bool isWaiting = true;
-    private int[] generatedNumbers = new int[3]; // Almacenar los números generados, 3 de ellos.
-    private const string saveFileName = "CharacterData.json"; // Nombre del archivo JSON.
-    private CharacterData characterData; // Datos del personaje.
-
-    [Serializable]
-    private class CharacterData
-    {
-        public int[] generatedNumbers; // Números generados para el personaje.
-    }
+    public int[] generatedNumbers = new int[3]; // Almacenar los números generados, 3 de ellos.
 
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        LoadCharacterData(); // Cargar datos del personaje al inicio.
 
         if (isWaiting)
         {
             GenerateRandomNumbers(); // Generar números si el personaje está esperando.
-            SaveCharacterData(); // Guardar los nuevos datos generados.
         }
 
         // StartCoroutine(CheckTransaction()); CHEQUEAR ERRORES
@@ -53,27 +42,6 @@ public class Request : MonoBehaviour
         for (int i = 0; i < generatedNumbers.Length; i++)
         {
             generatedNumbers[i] = random.Next(1, 11); // Números aleatorios del 1 al 10.
-        }
-    }
-
-    private void SaveCharacterData()
-    {
-        characterData = new CharacterData
-        {
-            generatedNumbers = generatedNumbers
-        };
-
-        string json = JsonUtility.ToJson(characterData);
-        File.WriteAllText(saveFileName, json);
-    }
-
-    private void LoadCharacterData()
-    {
-        if (File.Exists(saveFileName))
-        {
-            string json = File.ReadAllText(saveFileName);
-            characterData = JsonUtility.FromJson<CharacterData>(json);
-            generatedNumbers = characterData.generatedNumbers;
         }
     }
 
