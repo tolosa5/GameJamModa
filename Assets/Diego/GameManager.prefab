@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e822c27461f97bd48baa2cf509940d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalTimeLeft: 300
+  globalTimeLeft: 120
   clients: 0
   money: 0
   baseMoneyGains: 0
@@ -51,6 +51,8 @@ MonoBehaviour:
   message: {fileID: 0}
   messageGO: {fileID: 0}
   endDayPanel: {fileID: 0}
+  congratsPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   speechBubbles: []
   emojis: []
   clientTransforms: []
@@ -70,19 +72,28 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  placeHoldersPositionsBackUp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   clothes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 919132149155446097, guid: 5cbc06dd59b8ed64aa6bffe5ecf609d9, type: 3}
+  - {fileID: 919132149155446097, guid: 8d9524a2b82f75147886d47dcbfad913, type: 3}
+  - {fileID: 919132149155446097, guid: 75b28998a650e974fba844e2fd78ceff, type: 3}
+  - {fileID: 919132149155446097, guid: f838e0d5c1dbdd54690ef3a4450fbfcc, type: 3}
+  - {fileID: 919132149155446097, guid: 27762e22ad62e6f47a5036aeed2df6c9, type: 3}
+  - {fileID: 919132149155446097, guid: 08f84aa9a0a99b04e981ef56e58a1001, type: 3}
+  - {fileID: 919132149155446097, guid: 5766756fb9f4dd84888f311861411008, type: 3}
+  - {fileID: 919132149155446097, guid: b53d2a3588f04814782c9bfcfd0133b3, type: 3}
+  - {fileID: 919132149155446097, guid: cc8c0f46888784249b075188ef21e5a2, type: 3}
+  - {fileID: 919132149155446097, guid: d7abe740b3912214aa1f0db8eea76089, type: 3}
   coins: {fileID: 0}
   day: {fileID: 0}
   timerFiller: {fileID: 0}
