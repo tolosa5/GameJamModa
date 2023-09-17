@@ -9,17 +9,12 @@ public class ToBuy : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private bool RegresoOrigen = false; // Indica si el NPC está regresando al origen.
 
-
     private void OnEnable()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         // Inicialmente, el NPC se dirige al destino.
         SetDestination(DestinoCaja.position);
     }
-    // private void Start()
-    // {
-
-    // }
 
     private void Update()
     {

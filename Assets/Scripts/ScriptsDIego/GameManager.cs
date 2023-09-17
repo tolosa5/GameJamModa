@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float money;
     [SerializeField] float baseMoneyGains;
     [SerializeField] Image fillerImage;
+
     float moneyMultiplier;
     float totalTime;
 

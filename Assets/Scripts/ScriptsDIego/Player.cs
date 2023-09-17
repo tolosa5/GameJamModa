@@ -221,6 +221,8 @@ public class Player : MonoBehaviour
         completedBag = true;
         GameManager.gM.clients++;
 
+        ToBuy toBuyScr = Spawmer.instance.spawnedClients[0].GetComponent<ToBuy>();
+        toBuyScr.CompraCompleta = true;
         Spawmer.instance.spawnedClients.RemoveAt(0);
 
         //activar que el cliente se vaya y tal

@@ -16,7 +16,6 @@ public class RandonMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    
     void Update()
     {
         if(agent.remainingDistance <= agent.stoppingDistance) //done with path
@@ -28,11 +27,15 @@ public class RandonMovement : MonoBehaviour
                 agent.SetDestination(point);
             }
         }
-
+        Debug.Log(this.gameObject == Spawmer.instance.spawnedClients[0]);
+        if (this.gameObject == Spawmer.instance.spawnedClients[0])
+        {
+            Debug.Log("llegue");
+            //this.GetComponent<RandonMovement>().enabled = false;
+        }
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-
         Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) 
@@ -46,5 +49,9 @@ public class RandonMovement : MonoBehaviour
         return false;
     }
 
-    
+    private void OnDisable()
+    {
+        ToBuy toBuyScr = GetComponent<ToBuy>();
+        toBuyScr.enabled = true;
+    }
 }

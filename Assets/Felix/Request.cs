@@ -45,34 +45,4 @@ public class Request : MonoBehaviour
             generatedNumbers[i] = random.Next(1, 11); // Números aleatorios del 1 al 10.
         }
     }
-
-    // private IEnumerator CheckTransaction()
-    // {
-    //     yield return new WaitForSeconds(1.0f); // Espera para asegurarse de que el personaje se haya detenido.
-
-    //     // Verificar si los números coinciden con los del BAG.
-    //     GameObject bag = GameObject.Find("BAG");
-    //     if (bag != null)
-    //     {
-    //         BagScript bagScript = bag.GetComponent<BagScript>();
-    //         if (bagScript != null && BagContainsNumbers(bagScript))
-    //         {
-    //             Debug.Log("Transacción completada.");
-    //             isWaiting = true;
-    //             navMeshAgent.isStopped = false;
-    //         }
-    //     }
-    // }
-
-    // private bool BagContainsNumbers(BagScript bagScript)
-    // {
-    //     foreach (int num in generatedNumbers)
-    //     {
-    //         if (!bagScript.ContainsNumber(num))
-    //         {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
 }
