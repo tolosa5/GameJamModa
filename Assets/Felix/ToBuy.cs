@@ -35,7 +35,8 @@ public class ToBuy : MonoBehaviour
         if (RegresoOrigen && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
         {
             // RegresoOrigen = false;
-            this.gameObject.SetActive(false);
+            // this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 
