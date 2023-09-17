@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3238,7 +3238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1224002105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4472,6 +4472,52 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1729265173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729265175}
+  - component: {fileID: 1729265174}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1729265174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729265173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb47ace2d58477418e12e94d0bbf2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: NPC
+  replacementPrefab: {fileID: 439919191248033270}
+  respawnDelay: 1
+--- !u!4 &1729265175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729265173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7113652, y: 3.2703454, z: -10.083508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1756057918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5315,30 +5361,13 @@ GameObject:
   - component: {fileID: 439919191248033276}
   - component: {fileID: 439919191248033278}
   - component: {fileID: 439919191248033277}
-  - component: {fileID: 439919191248033271}
   m_Layer: 0
   m_Name: Bot
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &439919191248033271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439919191248033270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2befda80aebccff4f8188c9e68d1d90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 439919191248033276}
-  rango: 1
-  llego: 0
-  AreaDeCaminata: {fileID: 439919190464659853}
+  m_IsActive: 0
 --- !u!23 &439919191248033272
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5453,7 +5482,8 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   stoppingDistance: 2
   characterName: Character
-  generatedNumbers: 
+  generatedNumbers: 000000000000000000000000
+  nums: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
 --- !u!114 &439919191248033278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5461,7 +5491,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439919191248033270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 871fa99f8508c9848846fc0a9418493a, type: 3}
   m_Name: 

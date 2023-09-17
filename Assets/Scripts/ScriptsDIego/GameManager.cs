@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] string[] messagesTexts;
 
     [SerializeField] List<Transform> placeHoldersPositions;
+    [SerializeField] List<Transform> placeHoldersPositionsBackUp;
     [SerializeField] GameObject[] clothes;
 
     [SerializeField] TextMeshProUGUI coins, day;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
     {
         messageGO = message.gameObject;
         totalTime = globalTimeLeft;
+        //ClothesOrganizer();
     }
 
     private void Update()
@@ -74,18 +76,6 @@ public class GameManager : MonoBehaviour
         if (globalTimeLeft <= 0)
         {
             EndDay();
-        }
-
-        switch (currentDay)
-        {
-            default:
-            case 1:
-
-                break;
-
-            case 2:
-
-                break;
         }
     }
 
@@ -157,6 +147,7 @@ public class GameManager : MonoBehaviour
         DesactivateText(endDayPanel);
         currentDay++;
         day.text = "" + currentDay;
+        //ClothesOrganizer();
     }
 
     //se llama por UI
@@ -166,5 +157,6 @@ public class GameManager : MonoBehaviour
         DesactivateText(endDayPanel);
         currentDay = 1;
         day.text = "" + currentDay;
+        //ClothesOrganizer();
     }
 }
