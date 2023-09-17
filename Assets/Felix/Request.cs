@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,7 +14,7 @@ public class Request : MonoBehaviour
     public string characterName = "Character"; // Nombre del personaje para el archivo JSON.
     private NavMeshAgent navMeshAgent;
     private bool isWaiting = true;
-    public int[] generatedNumbers = new int[3]; // Almacenar los números generados, 3 de ellos.
+    public List<int> generatedNumbers = new List<int>(); // Almacenar los números generados, 3 de ellos.
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class Request : MonoBehaviour
     private void GenerateRandomNumbers()
     {
         System.Random random = new System.Random();
-        for (int i = 0; i < generatedNumbers.Length; i++)
+        for (int i = 0; i < generatedNumbers.Count; i++)
         {
             generatedNumbers[i] = random.Next(1, 11); // Números aleatorios del 1 al 10.
         }

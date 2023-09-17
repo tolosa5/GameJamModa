@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] string[] messagesTexts;
 
     [SerializeField] List<Transform> placeHoldersPositions;
+
+    [SerializeField] TextMeshProUGUI coins, day;
+    [SerializeField] Image timerFiller;
 
 
     private void Awake()

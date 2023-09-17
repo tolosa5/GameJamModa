@@ -12,4 +12,14 @@ public class Clothes : MonoBehaviour
     {
         return id;
     }
+
+    public Sprite GiveSprite()
+    {
+        return sprite;
+    }
+
+    public string GiveName()
+    {
+        return clothName;
+    }
 }

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     ParticleSystem correctClothParticles;
     [SerializeField] string[] interactTexts;
 
-    public List<int> desiredClothesIds;
+    //public List<int> desiredClothesIds;
     GameObject pickedGO;
     GameObject inTriggerGO;
     int inventory;
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
     void ShowInteractMessage(int i)
     {
-        interactTxtGO.transform.position = pickedGO.transform.position;
+        
         interactTxtGO.SetActive(true);
 
         interactText.text = interactTexts[i];
@@ -182,9 +182,9 @@ public class Player : MonoBehaviour
     {
         bag++;
         Debug.Log("llenando bolsa con " + pickedGO);
-        for (int i = 0; i < desiredClothesIds.Count; i++)
+        for (int i = 0; i < request.generatedNumbers.Count; i++)
         {
-            if (desiredClothesIds[i] == inventory)
+            if (request.generatedNumbers[i] == inventory)
             {
                 RightPlacement(i);
             }
@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
 
     void RightPlacement(int i)
     {
-        desiredClothesIds.RemoveAt(i);
+        request.generatedNumbers.RemoveAt(i);
         currentState = States.Normal;
         inventory = 0;
         //se activa feedback
@@ -224,7 +224,6 @@ public class Player : MonoBehaviour
         Spawmer.instance.spawnedClients.RemoveAt(0);
 
         //activar que el cliente se vaya y tal
-        Contants.instance.Ismoving = true;
 
         GameManager.gM.MoneyCalculator();
     }
