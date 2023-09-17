@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 public class Request : MonoBehaviour
 {
-    [SerializeField, Range(1,10)] int RangoNum = 5;
 
     public Transform targetPosition; // Posición específica a la que el personaje debe llegar.
     public float stoppingDistance = 2.0f; // Distancia de parada cercana al objetivo.

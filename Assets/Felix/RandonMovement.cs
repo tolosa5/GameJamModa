@@ -6,7 +6,10 @@ using UnityEngine.AI; //important
 public class RandonMovement : MonoBehaviour
 {
     public NavMeshAgent agent;
+    Spawmer spawmer;
+
     public float rango; //radius of sphere
+    public bool llego = false;
 
     public Transform AreaDeCaminata; //centre of the area the agent wants to move around in
     //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
@@ -27,12 +30,12 @@ public class RandonMovement : MonoBehaviour
                 agent.SetDestination(point);
             }
         }
-
-        Debug.Log(this.gameObject == Spawmer.Instance.spawnedObjects[0]);
-        if (this.gameObject == Spawmer.Instance.spawnedObjects[0])
+        Debug.Log(this.gameObject == Spawmer.Instance.spawnedClients[0]);
+        if (this.gameObject == Spawmer.Instance.spawnedClients[0])
         {
             Debug.Log("llegue");
-            //this.GetComponent<RandonMovement>().enabled = false;
+            llego = true;
+            // this.GetComponent<RandonMovement>().enabled = false;
         }
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -50,9 +53,5 @@ public class RandonMovement : MonoBehaviour
         return false;
     }
 
-    private void OnDisable()
-    {
-        ToBuy toBuyScr = GetComponent<ToBuy>();
-        toBuyScr.enabled = true;
-    }
+    
 }
