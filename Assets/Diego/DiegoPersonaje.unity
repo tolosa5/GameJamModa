@@ -282,69 +282,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &305578381
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 305578382}
-  - component: {fileID: 305578383}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &305578382
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305578381}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3309207, y: 10.08, z: -0.31961823}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &305578383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305578381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e822c27461f97bd48baa2cf509940d6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalTimeLeft: 300
-  clients: 0
-  money: 0
-  baseMoneyGains: 0
-  fillerImage: {fileID: 0}
-  message: {fileID: 496974398}
-  messageGO: {fileID: 0}
-  endDayPanel: {fileID: 2127112555}
-  speechBubbles: []
-  emojis: []
-  clientTransforms: []
-  bubbleOffset: {x: 0, y: 0, z: 0}
-  messagesTexts:
-  - Drop the incorrect cloth into the basket
-  - 
-  - 
-  placeHoldersPositions: []
-  coins: {fileID: 0}
-  day: {fileID: 0}
-  timerFiller: {fileID: 0}
 --- !u!1 &496974396
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +707,6 @@ MonoBehaviour:
   - Press F to pick up
   - Press F to drop into the bag
   - Press F to drop into the basket
-  desiredClothesIds: 010000000200000003000000
   completedBag: 0
   tags:
   - Cloth
@@ -6504,54 +6440,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1657062085
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1657062087}
-  - component: {fileID: 1657062086}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1657062086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657062085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46b7c0777e4ceb4e8f0aaccad64c9c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 1657062087}
-  objectPrefab: {fileID: 9031827238448090250, guid: ccaf7f5f30cc4a04a8269dec8991c5d6, type: 3}
-  maxObjectsToSpawn: 5
-  spawnInterval: 3
-  spawnedClients: []
---- !u!4 &1657062087
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657062085}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.375867, y: -0.44507432, z: -3.2538023}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861402107
 GameObject:
   m_ObjectHideFlags: 0
@@ -11528,3 +11416,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127112555}
   m_CullTransparentMesh: 1
+--- !u!1001 &5014491264838246703
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5014491265137205408, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 496974398}
+    - target: {fileID: 5014491265137205408, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: endDayPanel
+      value: 
+      objectReference: {fileID: 2127112555}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.3309207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.31961823
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205410, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
