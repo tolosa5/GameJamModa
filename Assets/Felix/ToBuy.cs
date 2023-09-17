@@ -7,7 +7,7 @@ public class ToBuy : MonoBehaviour
     [SerializeField] Transform origin; // Punto de origen del NPC.
     public bool CompraCompleta = false; // INDICA SI LA COMPRA SE COMPLETO o No
     private NavMeshAgent navMeshAgent;
-    private bool RegresoOrigen = false; // Indica si el NPC está regresando al origen.
+    public bool RegresoOrigen = false; // Indica si el NPC está regresando al origen.
 
     private void OnEnable()
     {
@@ -32,7 +32,8 @@ public class ToBuy : MonoBehaviour
         // Si el NPC está en proceso de regresar al origen y ha llegado, detén el proceso.
         if (RegresoOrigen && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
         {
-            RegresoOrigen = false;
+            // RegresoOrigen = false;
+            Destroy(this.gameObject);
         }
     }
 

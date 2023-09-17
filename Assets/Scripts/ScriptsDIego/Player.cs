@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
 
     void FindNearestClient()
     {
-        nearestClient = Spawmer.instance.spawnedClients[0];
+        nearestClient = Spawmer.Instance.spawnedClients[0];
         request = nearestClient.GetComponent<Request>();
     }
 
@@ -221,9 +221,9 @@ public class Player : MonoBehaviour
         completedBag = true;
         GameManager.gM.clients++;
 
-        ToBuy toBuyScr = Spawmer.instance.spawnedClients[0].GetComponent<ToBuy>();
+        ToBuy toBuyScr = Spawmer.Instance.spawnedClients[0].GetComponent<ToBuy>();
         toBuyScr.CompraCompleta = true;
-        Spawmer.instance.spawnedClients.RemoveAt(0);
+        Spawmer.Instance.spawnedClients.RemoveAt(0);
 
         //activar que el cliente se vaya y tal
 
