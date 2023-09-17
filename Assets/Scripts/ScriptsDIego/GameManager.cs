@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         messageGO = message.gameObject;
         totalTime = globalTimeLeft;
+        ClothesOrganizer();
     }
 
     private void Update()

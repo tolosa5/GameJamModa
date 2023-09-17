@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +12,7 @@ public class Request : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private bool isWaiting = true;
     public List<int> generatedNumbers = new List<int>(); // Almacenar los números generados, 3 de ellos.
+    [SerializeField] List<int> nums;
 
     private void Start()
     {
@@ -21,6 +20,7 @@ public class Request : MonoBehaviour
 
         if (isWaiting)
         {
+            Debug.Log("generar");
             GenerateRandomNumbers(); // Generar números si el personaje está esperando.
         }
 
@@ -38,10 +38,11 @@ public class Request : MonoBehaviour
 
     private void GenerateRandomNumbers()
     {
-        System.Random random = new System.Random();
-        for (int i = 0; i < generatedNumbers.Count; i++)
+        for (int i = 0; i < nums.Count; i++)
         {
-            generatedNumbers[i] = random.Next(1, 11); // Números aleatorios del 1 al 10.
+            int rand = nums[Random.Range(0, 11)];
+            generatedNumbers[i] = rand;
+            nums.Remove(rand);
         }
     }
 }
