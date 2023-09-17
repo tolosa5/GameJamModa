@@ -14,6 +14,8 @@ public class ToBuy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         // Inicialmente, el NPC se dirige al destino.
         SetDestination(DestinoCaja.position);
+        RegresoOrigen = false;
+        CompraCompleta = false;
     }
 
     private void Update()
@@ -33,7 +35,7 @@ public class ToBuy : MonoBehaviour
         if (RegresoOrigen && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.pathPending)
         {
             // RegresoOrigen = false;
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
