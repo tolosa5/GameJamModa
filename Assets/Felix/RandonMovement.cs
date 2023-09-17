@@ -27,8 +27,9 @@ public class RandonMovement : MonoBehaviour
                 agent.SetDestination(point);
             }
         }
-        Debug.Log(this.gameObject == Spawmer.instance.spawnedClients[0]);
-        if (this.gameObject == Spawmer.instance.spawnedClients[0])
+
+        Debug.Log(this.gameObject == Spawmer.Instance.spawnedObjects[0]);
+        if (this.gameObject == Spawmer.Instance.spawnedObjects[0])
         {
             Debug.Log("llegue");
             //this.GetComponent<RandonMovement>().enabled = false;

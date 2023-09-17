@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 
             float clientMoney = baseMoneyGains *= moneyMultiplier;
             money += clientMoney;
-
+            coins.text = money + "";
         }
     }
 
@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
         globalTimeLeft = totalTime;
         DesactivateText(endDayPanel);
         currentDay++;
+        day.text = "" + currentDay;
     }
 
     //se llama por UI
@@ -164,5 +165,6 @@ public class GameManager : MonoBehaviour
         globalTimeLeft = totalTime;
         DesactivateText(endDayPanel);
         currentDay = 1;
+        day.text = "" + currentDay;
     }
 }

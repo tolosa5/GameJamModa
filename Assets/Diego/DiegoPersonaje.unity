@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 573584450}
   - component: {fileID: 573584451}
   - component: {fileID: 573584449}
+  - component: {fileID: 573584452}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -707,6 +708,7 @@ MonoBehaviour:
   - Press F to pick up
   - Press F to drop into the bag
   - Press F to drop into the basket
+  trunk: {fileID: 0}
   completedBag: 0
   tags:
   - Cloth
@@ -734,6 +736,25 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &573584452
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573584444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &843599024
 GameObject:
   m_ObjectHideFlags: 0
@@ -11431,6 +11452,14 @@ PrefabInstance:
       propertyPath: endDayPanel
       value: 
       objectReference: {fileID: 2127112555}
+    - target: {fileID: 5014491265137205408, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: clothes.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014491265137205408, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
+      propertyPath: placeHoldersPositions.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5014491265137205409, guid: 9197b8267c1966f4eb242c6699fff9b6, type: 3}
       propertyPath: m_RootOrder
       value: 9

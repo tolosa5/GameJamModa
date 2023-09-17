@@ -1451,7 +1451,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 694767926}
         m_TargetAssemblyTypeName: ChangeTOGameScene, Assembly-CSharp
-        m_MethodName: ChangeToGame
+        m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1511,9 +1511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d5550738121324f8867259e34219f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPrincipal: {fileID: 0}
-  panelOptions: {fileID: 0}
-  master: {fileID: 0}
+  panelPrincipal: {fileID: 662098051}
+  panelOptions: {fileID: 422675442}
+  panelLetter: {fileID: 25629029}
+  master: {fileID: 24100000, guid: 3ba307da209b850488c2947dd9988f09, type: 2}
 --- !u!1 &852020367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelPrincipal: {fileID: 662098051}
   panelOptions: {fileID: 422675442}
+  panelLetter: {fileID: 0}
   master: {fileID: 24100000, guid: 3ba307da209b850488c2947dd9988f09, type: 2}
 --- !u!1 &1424303465
 GameObject:

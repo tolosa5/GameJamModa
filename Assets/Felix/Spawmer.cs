@@ -10,20 +10,14 @@ public class Spawmer : MonoBehaviour
     [SerializeField] private float spawnInterval = 1.0f; // Intervalo de tiempo entre cada spawneo.
     public bool IsBuying = false;
 
-    private List<GameObject> spawnedObjects = new List<GameObject>();
+    public List<GameObject> spawnedObjects = new List<GameObject>();
 
-    private static Spawmer instance;
+    public static Spawmer instance;
 
     // Propiedad estática para acceder a la instancia única.
     public static Spawmer Instance
     {
         get { return instance; }
-    }
-
-
-    private void Awake()
-    {
-        if (instance != )
     }
 
     private void Start()

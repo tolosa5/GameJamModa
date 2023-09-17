@@ -6,11 +6,18 @@ public class ChangeTOGameScene : MonoBehaviour
 {
     [SerializeField] GameObject panelPrincipal;
     [SerializeField] GameObject panelOptions;
+    [SerializeField] GameObject panelLetter;
     [SerializeField] AudioMixer master;
 
     public void ChangeToGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void PlayButton()
+    {
+        panelPrincipal.SetActive(false);
+        panelLetter.SetActive(true);
     }
 
     public void OptionsPanel()

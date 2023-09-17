@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
     NavMeshAgent agent;
+    Animator anim;
 
     Text interactText;
     [SerializeField] GameObject interactTxtGO;
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     GameObject inTriggerGO;
     int inventory;
     int bag;
+
+    [SerializeField] GameObject trunk;
     
     public bool completedBag;
 
@@ -55,6 +58,7 @@ public class Player : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 
         cam = Camera.main;
         camGO = cam.gameObject;
@@ -108,6 +112,14 @@ public class Player : MonoBehaviour
             targetPosition = hitInfo.point;
             agent.SetDestination(targetPosition);
         }
+        if (rb.velocity != Vector3.zero)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
     }
 
     void ShowInteractMessage(int i)
@@ -125,7 +137,7 @@ public class Player : MonoBehaviour
 
     void FindNearestClient()
     {
-        nearestClient = Spawmer.instance.spawnedClients[0];
+        nearestClient = Spawmer.Instance.spawnedObjects[0];
         request = nearestClient.GetComponent<Request>();
     }
 
@@ -171,6 +183,8 @@ public class Player : MonoBehaviour
 
             Clothes clothScr = pickedGO.GetComponent<Clothes>();
             inventory = clothScr.GiveId();
+
+            trunk.SetActive(true);
         }
         else
         {
@@ -206,6 +220,7 @@ public class Player : MonoBehaviour
         request.generatedNumbers.RemoveAt(i);
         currentState = States.Normal;
         inventory = 0;
+        trunk.SetActive(false);
         //se activa feedback
         correctClothParticles.Play();
 
@@ -221,9 +236,9 @@ public class Player : MonoBehaviour
         completedBag = true;
         GameManager.gM.clients++;
 
-        ToBuy toBuyScr = Spawmer.instance.spawnedClients[0].GetComponent<ToBuy>();
+        ToBuy toBuyScr = Spawmer.Instance.spawnedObjects[0].GetComponent<ToBuy>();
         toBuyScr.CompraCompleta = true;
-        Spawmer.instance.spawnedClients.RemoveAt(0);
+        Spawmer.Instance.spawnedObjects.RemoveAt(0);
 
         //activar que el cliente se vaya y tal
 
@@ -233,6 +248,7 @@ public class Player : MonoBehaviour
     void DropToBasket()
     {
         inventory = 0;
+        trunk.SetActive(false);
         currentState = States.Normal;
         GameManager.gM.DesactivateText(GameManager.gM.messageGO);
     }
