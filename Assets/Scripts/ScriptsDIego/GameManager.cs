@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
         DesactivateText(endDayPanel);
         currentDay++;
         day.text = "" + currentDay;
+        ClothesOrganizer();
     }
 
     //se llama por UI
@@ -167,5 +168,6 @@ public class GameManager : MonoBehaviour
         DesactivateText(endDayPanel);
         currentDay = 1;
         day.text = "" + currentDay;
+        ClothesOrganizer();
     }
 }
