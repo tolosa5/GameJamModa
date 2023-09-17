@@ -9,8 +9,22 @@ public class Spawmer : MonoBehaviour
     [SerializeField] private int maxObjectsToSpawn = 5; // Número límite de personajes.
     [SerializeField] private float spawnInterval = 3.0f; // Intervalo de tiempo entre cada spawneo.
 
-    public List<GameObject> spawnedObjects = new List<GameObject>();
+    public List<GameObject> spawnedClients = new List<GameObject>();
     private float lastSpawnTime;
+
+    public static Spawmer instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -20,7 +34,8 @@ public class Spawmer : MonoBehaviour
     private void Update()
     {
         //comprueba si se puede spawnear
-        if (spawnedObjects.Count < maxObjectsToSpawn && Time.time - lastSpawnTime >= spawnInterval)
+        if (spawnedClients.Count < maxObjectsToSpawn && Time.
+            time - lastSpawnTime >= spawnInterval)
         {
             SpawnObject();
         }
@@ -30,7 +45,7 @@ public class Spawmer : MonoBehaviour
     {
         // Crea una nueva instancia del objeto y añade a lista
         GameObject newObject = Instantiate(objectPrefab, spawnPoint.position, Quaternion.identity);
-        spawnedObjects.Add(newObject);
+        spawnedClients.Add(newObject);
 
         // Actualiza el tiempo del último spawneo///
         lastSpawnTime = Time.time;

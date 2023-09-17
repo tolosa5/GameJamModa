@@ -123,6 +123,12 @@ public class Player : MonoBehaviour
         textHolder.SetActive(false);
     }
 
+    void FindNearestClient()
+    {
+        nearestClient = Spawmer.instance.spawnedClients[0];
+        request = nearestClient.GetComponent<Request>();
+    }
+
     void Interact(string objTag)
     {
         if (objTag == tags[0])
@@ -214,6 +220,8 @@ public class Player : MonoBehaviour
         bag = 0;
         completedBag = true;
         GameManager.gM.clients++;
+
+        Spawmer.instance.spawnedClients.RemoveAt(0);
 
         //activar que el cliente se vaya y tal
         Contants.instance.Ismoving = true;

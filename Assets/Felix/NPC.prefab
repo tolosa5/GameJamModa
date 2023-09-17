@@ -672,3 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ismoving: 0
+  Complete4: 0
+  Complete3: 0
+  Complete2: 0
+  Complete1: 0
