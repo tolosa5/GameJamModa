@@ -216,7 +216,6 @@ public class Player : MonoBehaviour
         GameManager.gM.clients++;
 
         //activar que el cliente se vaya y tal
-        Contants.instance.Ismoving = true;
 
         GameManager.gM.MoneyCalculator();
     }
